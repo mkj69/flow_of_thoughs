@@ -163,11 +163,6 @@ async function init() {
   categories.forEach(c => els.category.insertAdjacentHTML('beforeend', `<option value="${c}">${niceTag(c)}</option>`));
   years.forEach(y => els.year.insertAdjacentHTML('beforeend', `<option value="${y}">${y}</option>`));
 
-  document.querySelector('#stat-papers').textContent = state.papers.length;
-  document.querySelector('#stat-years').textContent = new Set(state.papers.map(p => p.year)).size;
-  document.querySelector('#stat-categories').textContent = categories.length;
-  document.querySelector('#stat-insights').textContent = state.insights.length;
-
   [els.search, els.category, els.year, els.status].forEach(el => el.addEventListener('input', syncFilters));
   els.clear.addEventListener('click', () => {
     els.search.value = '';
