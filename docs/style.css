@@ -352,6 +352,22 @@ select, .clear-button { min-height: 44px; border: 1px solid var(--line); backgro
 footer { border-top: 1px solid var(--line); padding: 34px 0 50px; font-size: 12px; color: var(--muted); }
 .footer-grid { display: flex; align-items: flex-start; justify-content: space-between; gap: 20px; }
 .footer-grid strong { color: var(--ink); }
+.ai-disclosure {
+  display: grid;
+  grid-template-columns: 190px minmax(0, 1fr);
+  gap: 28px;
+  margin-top: 26px;
+  padding-top: 22px;
+  border-top: 1px solid var(--line);
+}
+.ai-disclosure strong {
+  color: var(--ink);
+  font-size: 10px;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+}
+.ai-disclosure strong span { margin-right: 5px; color: var(--accent); }
+.ai-disclosure p { max-width: 780px; margin: 0; font-size: 11px; line-height: 1.65; }
 .empty { padding: 42px 0; color: var(--muted); font-size: 14px; }
 @media (max-width: 900px) {
   nav a:not(:last-child) { display: none; }
@@ -418,6 +434,7 @@ footer { border-top: 1px solid var(--line); padding: 34px 0 50px; font-size: 12p
   }
   .contribution { grid-template-columns: 1fr; }
   .footer-grid { flex-direction: column; }
+  .ai-disclosure { grid-template-columns: 1fr; gap: 8px; }
 }
 
 /* Evidence-backed synthesis */
