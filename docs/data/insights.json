@@ -1,0 +1,206 @@
+[
+  {
+    "id": "recurrence-needs-training",
+    "title": "Useful recurrence has to be trained for self-application",
+    "level": "strong synthesis",
+    "summary": "Repeated computation is not automatically useful. Across recent recurrent reasoners, the training objective has to prepare intermediate states for the states the model will actually encounter after repeated self-application.",
+    "evidence": [
+      {
+        "type": "DIRECT",
+        "paper": "Flow Reasoning Models",
+        "claim": "Naive self-conditioning degrades at greater recurrent depth because one-step training states differ from recursively generated inference states; Fixed-Point Forcing trains on the model's own recurrent states.",
+        "url": "https://arxiv.org/abs/2606.29150"
+      },
+      {
+        "type": "DIRECT",
+        "paper": "Thinking with Looped Flows",
+        "claim": "Short-horizon backpropagation leaves early recurrent updates poorly trained for future computation; temporally associated local denoising objectives are introduced to make hidden states remain useful over time.",
+        "url": "https://arxiv.org/abs/2609.11801"
+      },
+      {
+        "type": "DIRECT",
+        "paper": "Latent Recurrent Transformer",
+        "claim": "The paper introduces interleaved parallel training specifically so tokens receive recurrent-memory-aware supervision without fully sequential unrolling.",
+        "url": "https://arxiv.org/abs/2605.26797"
+      }
+    ],
+    "synthesis": "The common bottleneck is not recurrence itself but state-distribution mismatch and long-horizon credit assignment. A recurrent model needs an objective that shapes states to remain useful under future applications of the same update rule.",
+    "gap": "We do not yet have a task-general training principle that guarantees useful improvement under additional recurrent steps while remaining efficient to train.",
+    "hypotheses": [
+      "Training on self-generated recurrent states should improve depth extrapolation more reliably than training only on teacher or one-step states.",
+      "Local objectives can work without full BPTT when they enforce a consistent notion of temporal progress across recurrent steps.",
+      "The best recurrence objective may be characterized by invariance to the train-time versus inference-time state distribution shift."
+    ]
+  },
+  {
+    "id": "stability-not-correctness",
+    "title": "Stability is not correctness",
+    "level": "strong synthesis",
+    "summary": "A recurrent system can be perfectly stable and still converge to the wrong answer. The central issue is not merely making a loop contractive, but aligning its stable states with valid solutions.",
+    "evidence": [
+      {
+        "type": "DIRECT",
+        "paper": "Parcae",
+        "claim": "Spectral constraints stabilize looped language models and prevent residual explosion; test-time improvements nevertheless follow a saturating curve rather than improving indefinitely.",
+        "url": "https://arxiv.org/abs/2604.12946"
+      },
+      {
+        "type": "DIRECT",
+        "paper": "Flow Reasoning Models",
+        "claim": "Naively applied flow models can converge confidently to incorrect structured solutions; the revised training recipe is designed to suppress spurious recurrent fixed points.",
+        "url": "https://arxiv.org/abs/2606.29150"
+      },
+      {
+        "type": "DIRECT",
+        "paper": "Equilibrium Reasoners",
+        "claim": "Test-time gains are associated with convergence toward solution-aligned attractors, and difficulty is reflected in how much iterative computation is needed to reach them.",
+        "url": "https://arxiv.org/abs/2605.21488"
+      }
+    ],
+    "synthesis": "Dynamical stability is a prerequisite for deep recurrence, but the scientifically important object is the attractor landscape: which fixed points exist, which inputs reach them, and whether those fixed points correspond to correct solutions.",
+    "gap": "There is no general criterion that distinguishes 'correct convergence' from 'confidently wrong convergence' before an external answer checker is available.",
+    "hypotheses": [
+      "Fixed-point residual alone is insufficient as a confidence signal; local stability must be combined with a measure of solution validity or basin geometry.",
+      "Training should reshape both attractor locations and basin volumes, not only increase contraction around existing states.",
+      "A useful halting signal may need to estimate the marginal value of another update, not merely the size of the current update."
+    ]
+  },
+  {
+    "id": "thought-state-properties",
+    "title": "A thought state must be useful to control and verify, not only expressive",
+    "level": "moderate synthesis",
+    "summary": "Continuous latent states can represent alternatives that language tokens commit away from, but downstream work shows that latent trajectories can be difficult to discriminate as correct versus incorrect. Representation quality therefore has to be judged by more than task accuracy.",
+    "evidence": [
+      {
+        "type": "DIRECT",
+        "paper": "Coconut",
+        "claim": "Feeding hidden states back as continuous thoughts can encode multiple alternative next steps and yields breadth-first-search-like behavior on planning-style tasks.",
+        "url": "https://arxiv.org/abs/2412.06769"
+      },
+      {
+        "type": "DIRECT",
+        "paper": "Coconut",
+        "claim": "The authors identify learning latent reasoning without supervision from language reasoning chains as a major future direction; sequential continuous-thought forward passes also create parallelism challenges.",
+        "url": "https://arxiv.org/abs/2412.06769"
+      },
+      {
+        "type": "FOLLOW-UP",
+        "paper": "Towards Inference-time Scaling for Continuous Space Reasoning",
+        "claim": "Discrete-space PRM/ORM reranking recipes transfer only weakly to continuous thoughts because current latent representations do not cleanly separate correct from incorrect reasoning trajectories.",
+        "url": "https://aclanthology.org/2026.findings-acl.1338/"
+      }
+    ],
+    "synthesis": "The right thought representation should support at least four operations: carry alternatives, expose progress, permit error discrimination, and remain controllable under further computation. Expressiveness alone is not enough.",
+    "gap": "We lack a representation-learning objective that makes latent reasoning states simultaneously useful for solving, verification, selection, and steering.",
+    "hypotheses": [
+      "Latent-state objectives should include an explicit notion of progress or discriminability in addition to next-answer likelihood.",
+      "A representation that preserves multiple hypotheses may need a separate mechanism for commitment and verification.",
+      "Verifier-friendly latent geometry may be a missing ingredient for inference-time scaling in continuous reasoning."
+    ]
+  },
+  {
+    "id": "compute-is-vector",
+    "title": "Test-time compute is a vector, not a scalar",
+    "level": "strong synthesis",
+    "summary": "Recent systems spend extra inference compute in qualitatively different ways: longer trajectories, more independent trajectories, repeated whole-solution refinement, or token-wise adaptive depth. Treating all of these as a single 'more compute' knob hides the allocation problem.",
+    "evidence": [
+      {
+        "type": "DIRECT",
+        "paper": "Equilibrium Reasoners",
+        "claim": "The model scales internal computation along depth (more iterations) and breadth (more stochastic initializations), showing these are distinct test-time axes.",
+        "url": "https://arxiv.org/abs/2605.21488"
+      },
+      {
+        "type": "DIRECT",
+        "paper": "Flow Reasoning Models",
+        "claim": "Inference compute can be spent on recurrent refinement and, in earlier formulations, on proposing multiple candidates and testing dynamic stability.",
+        "url": "https://arxiv.org/abs/2606.29150"
+      },
+      {
+        "type": "DIRECT",
+        "paper": "PonderLM-3",
+        "claim": "Extra computation is allocated per token using learned differentiable masking rather than charging every token a uniform number of extra steps.",
+        "url": "https://arxiv.org/abs/2603.02023"
+      },
+      {
+        "type": "DIRECT",
+        "paper": "Thinking with Looped Flows",
+        "claim": "A finer temporal integration grid increases recurrent computation, while stochastic initializations provide multiple valid predictions on multi-solution tasks.",
+        "url": "https://arxiv.org/abs/2609.11801"
+      }
+    ],
+    "synthesis": "The real test-time scaling problem is compute allocation: given one additional unit of FLOPs, should the model refine the current state, branch to another trajectory, revisit a difficult token, or stop?",
+    "gap": "There is no shared compute-normalized benchmark or policy that compares these allocation modes under the same latency, FLOP, and memory budget.",
+    "hypotheses": [
+      "Optimal allocation should depend on uncertainty about both the current state and the value of alternative trajectories.",
+      "Hard problems may benefit from depth until local progress saturates, then from breadth; easy problems should halt early.",
+      "Per-token allocation and trajectory-level allocation may be jointly learnable rather than separate mechanisms."
+    ]
+  },
+  {
+    "id": "looping-scaling-axis",
+    "title": "Looping is a real scaling axis, but its returns saturate",
+    "level": "direct + synthesis",
+    "summary": "Stable looped models show predictable training and inference scaling behavior. This makes recurrence a credible third resource axis beside parameters and data, but also shows why 'just think longer' cannot be the whole story.",
+    "evidence": [
+      {
+        "type": "DIRECT",
+        "paper": "Parcae",
+        "claim": "Under the studied budgets, compute-optimal training increases recurrence and data together; at test time, quality improves with recurrence according to a saturating exponential trend.",
+        "url": "https://arxiv.org/abs/2604.12946"
+      },
+      {
+        "type": "DIRECT",
+        "paper": "Parcae — Future Work",
+        "claim": "The authors explicitly call for larger-scale validation, joint scaling of parameters/data/recurrence, more extreme recurrence, alternative update rules, and methods that preserve quality with fewer inference steps.",
+        "url": "https://arxiv.org/abs/2604.12946"
+      },
+      {
+        "type": "DIRECT",
+        "paper": "Latent Recurrent Transformer",
+        "claim": "A different design point moves recurrent refinement into pretraining and carries a compact latent state across tokens, retaining one normal forward pass per generated token with modest latency overhead.",
+        "url": "https://arxiv.org/abs/2605.26797"
+      }
+    ],
+    "synthesis": "Recurrence should be treated as a resource with its own scaling law and systems cost. The important frontier is not maximum loop depth, but the Pareto trade-off among parameters, training data, recurrent steps, memory, and wall-clock latency.",
+    "gap": "Existing laws are architecture- and scale-limited; we do not know whether a universal coupled scaling law can predict when recurrence beats simply buying more parameters or data.",
+    "hypotheses": [
+      "The optimal recurrence budget should grow sublinearly with model scale and task difficulty because marginal gains saturate.",
+      "Architectures that internalize useful recurrence during pretraining may dominate explicit extra-loop inference in latency-sensitive settings.",
+      "A coupled scaling law over parameters, data, recurrent depth, and state capacity may predict the best architecture for a deployment budget."
+    ]
+  },
+  {
+    "id": "convergence-as-signal",
+    "title": "Convergence may be a compute-control signal — but only after alignment",
+    "level": "moderate synthesis",
+    "summary": "Several recurrent systems suggest that convergence speed or fixed-point residual can reveal task difficulty and solution quality. The same literature also shows why this signal is unsafe before the model's stable states are aligned with correct solutions.",
+    "evidence": [
+      {
+        "type": "DIRECT",
+        "paper": "Equilibrium Reasoners",
+        "claim": "Simple cases converge in few iterations while harder cases benefit from much larger test-time computation; stronger convergence is coupled with solution-aligned attractors.",
+        "url": "https://arxiv.org/abs/2605.21488"
+      },
+      {
+        "type": "DIRECT",
+        "paper": "Flow Reasoning Models",
+        "claim": "Correct solutions can behave as stable fixed points, but naive dynamics can also settle into confidently wrong states.",
+        "url": "https://arxiv.org/abs/2606.29150"
+      },
+      {
+        "type": "DIRECT",
+        "paper": "PonderLM-3",
+        "claim": "The model learns token-wise compute allocation and stopping behavior under a self-supervised objective, motivated by diminishing marginal returns from uniform extra computation.",
+        "url": "https://arxiv.org/abs/2603.02023"
+      }
+    ],
+    "synthesis": "Convergence is promising not as a correctness proof but as one feature in a learned marginal-value-of-compute estimator: continue only while another recurrent update is expected to improve the solution.",
+    "gap": "Current work does not establish a task-general stopping rule that remains calibrated under distribution shift or spurious-attractor failures.",
+    "hypotheses": [
+      "A halting model should predict expected improvement from the next step rather than thresholding state change alone.",
+      "Stopping calibration should be evaluated jointly with OOD correctness, not only average FLOP savings.",
+      "Breadth should be triggered when within-trajectory convergence stalls but uncertainty across plausible solutions remains high."
+    ]
+  }
+]

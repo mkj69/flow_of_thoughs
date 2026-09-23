@@ -1,0 +1,408 @@
+[
+  {
+    "id": "act-2016",
+    "title": "Adaptive Computation Time for Recurrent Neural Networks",
+    "year": 2016,
+    "authors": "Alex Graves",
+    "url": "https://arxiv.org/abs/1603.08983",
+    "categories": [
+      "adaptive-compute",
+      "foundations"
+    ],
+    "state": "recurrent hidden state",
+    "compute": "learned halting depth",
+    "task": "algorithmic tasks / language modeling",
+    "status": "root",
+    "takeaway": "A canonical early formulation of learning how much computation each input needs.",
+    "why": "Establishes adaptive compute as a first-class modeling variable rather than a fixed architectural constant."
+  },
+  {
+    "id": "universal-transformer-2018",
+    "title": "Universal Transformers",
+    "year": 2018,
+    "authors": "Mostafa Dehghani et al.",
+    "url": "https://arxiv.org/abs/1807.03819",
+    "categories": [
+      "recurrent-depth",
+      "adaptive-compute",
+      "foundations"
+    ],
+    "state": "token representations",
+    "compute": "recurrent depth + optional halting",
+    "task": "sequence modeling / algorithmic reasoning",
+    "status": "root",
+    "takeaway": "Reuses a Transformer block across depth and optionally learns per-position computation time.",
+    "why": "A direct ancestor of modern looped and recurrent-depth Transformers."
+  },
+  {
+    "id": "block-recurrent-2022",
+    "title": "Block-Recurrent Transformers",
+    "year": 2022,
+    "authors": "DeLesley Hutchins et al.",
+    "url": "https://arxiv.org/abs/2203.07852",
+    "categories": [
+      "recurrent-memory",
+      "long-context"
+    ],
+    "state": "recurrent memory vectors",
+    "compute": "recurrence across token blocks",
+    "task": "long-context language modeling",
+    "status": "root",
+    "takeaway": "Adds a recurrent memory state that is updated block by block while preserving parallel computation within each block.",
+    "why": "Shows how recurrence can be used as memory, not only as extra depth."
+  },
+  {
+    "id": "looped-programmable-2023",
+    "title": "Looped Transformers as Programmable Computers",
+    "year": 2023,
+    "authors": "Angeliki Giannou et al.",
+    "url": "https://arxiv.org/abs/2301.13196",
+    "categories": [
+      "recurrent-depth",
+      "theory"
+    ],
+    "state": "sequence-as-memory",
+    "compute": "fixed block repeated in a loop",
+    "task": "algorithmic computation",
+    "status": "root",
+    "takeaway": "Demonstrates that shallow Transformers placed in a loop can emulate iterative programs and general-purpose computation.",
+    "why": "Makes the connection between looped Transformers and iterative algorithms explicit."
+  },
+  {
+    "id": "rin-2023",
+    "title": "Scalable Adaptive Computation for Iterative Generation",
+    "year": 2023,
+    "authors": "Allan Jabri et al.",
+    "url": "https://proceedings.mlr.press/v202/jabri23a.html",
+    "categories": [
+      "self-conditioning",
+      "iterative-generation",
+      "foundations"
+    ],
+    "state": "latent tokens",
+    "compute": "recurrent latent self-conditioning",
+    "task": "image / video generation",
+    "status": "root",
+    "takeaway": "Recurrent Interface Networks recycle latent states across iterative generative steps through self-conditioning.",
+    "why": "A useful bridge from iterative generative modeling to recurrent reasoning architectures."
+  },
+  {
+    "id": "coconut-2024",
+    "title": "Training Large Language Models to Reason in a Continuous Latent Space",
+    "year": 2024,
+    "authors": "Shibo Hao et al.",
+    "url": "https://arxiv.org/abs/2412.06769",
+    "categories": [
+      "latent-reasoning",
+      "recurrent-depth"
+    ],
+    "state": "continuous hidden state",
+    "compute": "hidden state fed back as next input",
+    "task": "reasoning",
+    "status": "core",
+    "takeaway": "Coconut replaces some explicit thought tokens with recurrent continuous hidden states.",
+    "why": "One of the clearest modern examples of moving reasoning from language space into latent state space."
+  },
+  {
+    "id": "recurrent-depth-2025",
+    "title": "Scaling up Test-Time Compute with Latent Reasoning: A Recurrent Depth Approach",
+    "year": 2025,
+    "authors": "Jonas Geiping et al.",
+    "url": "https://arxiv.org/abs/2502.05171",
+    "categories": [
+      "recurrent-depth",
+      "latent-reasoning",
+      "test-time-compute"
+    ],
+    "state": "latent residual state",
+    "compute": "variable recurrent depth",
+    "task": "language modeling / reasoning",
+    "status": "core",
+    "takeaway": "Scales test-time compute by iterating a recurrent block rather than emitting more reasoning tokens.",
+    "why": "Directly operationalizes the question: what if thinking longer means deeper latent computation?"
+  },
+  {
+    "id": "ponderlm2-2025",
+    "title": "PonderLM-2: Pretraining LLM with Latent Thoughts in Continuous Space",
+    "year": 2025,
+    "authors": "Boyi Zeng et al.",
+    "url": "https://arxiv.org/abs/2509.23184",
+    "categories": [
+      "latent-reasoning",
+      "test-time-compute"
+    ],
+    "state": "per-token latent thought",
+    "compute": "extra latent steps before token emission",
+    "task": "language modeling / downstream tasks",
+    "status": "core",
+    "takeaway": "Adds latent computation steps before emitting each token and studies scaling the number of those steps.",
+    "why": "Provides a clean per-token alternative to visible chain-of-thought for allocating extra compute."
+  },
+  {
+    "id": "loopformer-2026",
+    "title": "LoopFormer: Elastic-Depth Looped Transformers for Latent Reasoning via Shortcut Modulation",
+    "year": 2026,
+    "authors": "Ahmadreza Jeddi et al.",
+    "url": "https://arxiv.org/abs/2602.11451",
+    "categories": [
+      "recurrent-depth",
+      "adaptive-compute",
+      "latent-reasoning"
+    ],
+    "state": "looped hidden representation",
+    "compute": "budget-conditioned variable loops",
+    "task": "language modeling / reasoning",
+    "status": "core",
+    "takeaway": "Trains looped models to remain useful across different compute budgets rather than at one fixed recurrence depth.",
+    "why": "Targets elastic depth and train-test consistency, central issues for practical recurrent reasoning."
+  },
+  {
+    "id": "ponderlm3-2026",
+    "title": "PonderLM-3: Adaptive Token-Wise Pondering with Differentiable Masking",
+    "year": 2026,
+    "authors": "He Li et al.",
+    "url": "https://arxiv.org/abs/2603.02023",
+    "categories": [
+      "adaptive-compute",
+      "latent-reasoning",
+      "test-time-compute"
+    ],
+    "state": "token-wise latent computation",
+    "compute": "learned per-token pondering budget",
+    "task": "language modeling / reasoning",
+    "status": "core",
+    "takeaway": "Learns where extra computation should be allocated instead of applying the same number of latent steps to every token.",
+    "why": "Pushes the field from 'more compute' toward 'selective compute'."
+  },
+  {
+    "id": "loop-think-generalize-2026",
+    "title": "Loop, Think, & Generalize: Implicit Reasoning in Recurrent-Depth Transformers",
+    "year": 2026,
+    "authors": "Harsh Kohli et al.",
+    "url": "https://arxiv.org/abs/2604.07822",
+    "categories": [
+      "recurrent-depth",
+      "generalization",
+      "reasoning-dynamics"
+    ],
+    "state": "recurrent-depth hidden state",
+    "compute": "inference-time recurrence",
+    "task": "multi-hop implicit reasoning",
+    "status": "core",
+    "takeaway": "Studies systematic generalization and depth extrapolation, including the failure mode of overthinking.",
+    "why": "Connects recurrence to compositional generalization and asks when additional loops stop helping."
+  },
+  {
+    "id": "parcae-2026",
+    "title": "Parcae: Scaling Laws For Stable Looped Language Models",
+    "year": 2026,
+    "authors": "Hayden Prairie et al.",
+    "url": "https://arxiv.org/abs/2604.12946",
+    "categories": [
+      "recurrent-depth",
+      "scaling",
+      "reasoning-dynamics"
+    ],
+    "state": "residual stream",
+    "compute": "stable repeated block",
+    "task": "language modeling / test-time scaling",
+    "status": "core",
+    "takeaway": "Treats looping as a dynamical system, stabilizes recurrence, and studies scaling laws for train- and test-time loops.",
+    "why": "Makes stability and scaling of recurrent depth explicit scientific objects."
+  },
+  {
+    "id": "ut-memory-2026",
+    "title": "Universal Transformers Need Memory: Depth-State Trade-offs in Adaptive Recursive Reasoning",
+    "year": 2026,
+    "authors": "Grigory Sapunov",
+    "url": "https://arxiv.org/abs/2604.21999",
+    "categories": [
+      "recurrent-depth",
+      "adaptive-compute",
+      "memory"
+    ],
+    "state": "memory tokens + recurrent hidden state",
+    "compute": "adaptive recurrence",
+    "task": "Sudoku reasoning",
+    "status": "adjacent",
+    "takeaway": "Studies a trade-off between scratchpad memory capacity and pondering depth in recursive reasoning.",
+    "why": "Highlights that reasoning compute may be jointly determined by state capacity and recurrent depth."
+  },
+  {
+    "id": "attractor-2026",
+    "title": "Solve the Loop: Attractor Models for Language and Reasoning",
+    "year": 2026,
+    "authors": "Jacob Fein-Ashley, Paria Rashidinejad",
+    "url": "https://arxiv.org/abs/2605.12466",
+    "categories": [
+      "reasoning-dynamics",
+      "fixed-points",
+      "recurrent-depth"
+    ],
+    "state": "output embedding / equilibrium state",
+    "compute": "fixed-point solver",
+    "task": "language modeling / reasoning",
+    "status": "core",
+    "takeaway": "Reframes iterative refinement around convergence to fixed points and trains with implicit differentiation.",
+    "why": "A direct bridge between reasoning architectures and dynamical-systems / equilibrium-model language."
+  },
+  {
+    "id": "lrt-2026",
+    "title": "Latent Recurrent Transformer: Architecture Exploration, Training Strategies, and Scaling Behavior",
+    "year": 2026,
+    "authors": "Zeyi Huang et al.",
+    "url": "https://arxiv.org/abs/2605.26797",
+    "categories": [
+      "recurrent-memory",
+      "latent-reasoning",
+      "scaling"
+    ],
+    "state": "previous-token high-level hidden state",
+    "compute": "cross-token latent recurrence",
+    "task": "language modeling / in-context learning",
+    "status": "core",
+    "takeaway": "Adds a lightweight recurrent latent pathway across token positions while preserving standard attention and KV-cache interfaces.",
+    "why": "Shows a practical route to recurrent computation without explicit pause tokens or repeated full passes."
+  },
+  {
+    "id": "flow-reasoning-2026",
+    "title": "Flow Reasoning Models: Turning Discrete Flows into Efficient Recurrent Reasoners",
+    "year": 2026,
+    "authors": "Alec Helbling et al.",
+    "url": "https://arxiv.org/abs/2606.29150",
+    "categories": [
+      "flow-reasoning",
+      "self-conditioning",
+      "fixed-points"
+    ],
+    "state": "whole candidate solution",
+    "compute": "flow updates + recurrent self-conditioning",
+    "task": "structured reasoning",
+    "status": "core",
+    "takeaway": "Turns discrete flow models into recurrent reasoners that repeatedly refine predictions through self-conditioning.",
+    "why": "One of the clearest points where generative flows and iterative reasoning architectures directly meet."
+  },
+  {
+    "id": "maglev-2026",
+    "title": "Maglev: Sliding Recurrent Memory",
+    "year": 2026,
+    "authors": "Bo Liu, Qiang Liu",
+    "url": "https://arxiv.org/abs/2608.02870",
+    "categories": [
+      "recurrent-memory",
+      "long-context",
+      "scaling"
+    ],
+    "state": "fixed-size recurrent K/V memory",
+    "compute": "memory recurrence across decoding",
+    "task": "language modeling / long context",
+    "status": "adjacent",
+    "takeaway": "Uses a stronger prefiller to supervise recurrent memories used by a sliding-window decoder.",
+    "why": "Represents a complementary axis: recurrent state as memory rather than extra recurrent depth."
+  },
+  {
+    "id": "looped-flows-2026",
+    "title": "Thinking with Looped Flows",
+    "year": 2026,
+    "authors": "Ayhan Suleymanzade et al.",
+    "url": "https://arxiv.org/abs/2609.11801",
+    "categories": [
+      "flow-reasoning",
+      "recurrent-depth",
+      "self-conditioning",
+      "test-time-compute"
+    ],
+    "state": "recurrent hidden state coupled to flow state",
+    "compute": "probability-flow integration on a finer time grid",
+    "task": "reasoning / ARC-AGI",
+    "status": "core",
+    "takeaway": "Trains recurrent computation with local denoising objectives and spends more test-time compute by refining the temporal grid.",
+    "why": "A strong recent example of combining flow objectives, recurrence, and scalable test-time reasoning."
+  },
+  {
+    "id": "path-independent-equilibrium-2022",
+    "title": "Path Independent Equilibrium Models Can Better Exploit Test-Time Computation",
+    "year": 2022,
+    "authors": "Cem Anil et al.",
+    "url": "https://arxiv.org/abs/2211.09961",
+    "status": "root",
+    "categories": [
+      "recurrent-depth",
+      "reasoning-dynamics",
+      "adaptive-compute"
+    ],
+    "state": "Equilibrium hidden state",
+    "compute": "More equilibrium iterations",
+    "task": "Algorithmic / upward-generalization settings",
+    "takeaway": "Path independence across initializations is strongly associated with exploiting extra inference iterations on harder examples.",
+    "why": "A direct precursor to the attractor/fixed-point view of scalable latent reasoning."
+  },
+  {
+    "id": "fixed-point-reasoners-2026",
+    "title": "Fixed-Point Reasoners: Stable and Adaptive Deep Looped Transformers",
+    "year": 2026,
+    "authors": "Sajad Movahedi et al.",
+    "url": "https://arxiv.org/abs/2606.18206",
+    "status": "core",
+    "categories": [
+      "recurrent-depth",
+      "reasoning-dynamics",
+      "adaptive-compute"
+    ],
+    "state": "Looped Transformer hidden state",
+    "compute": "Fixed-point adaptive halting",
+    "task": "Sudoku, Maze, state-tracking, ARC-AGI",
+    "takeaway": "Uses fixed-point convergence as an end-to-end halting mechanism and adapts recurrent compute to task difficulty.",
+    "why": "Connects stability, convergence, and compute allocation in one recurrent architecture."
+  },
+  {
+    "id": "fixed-point-flows-2026",
+    "title": "Self-conditioned Flow Map Language Models via Fixed-point Flows",
+    "year": 2026,
+    "authors": "Jaehoon Yoo et al.",
+    "url": "https://arxiv.org/abs/2607.00714",
+    "status": "adjacent",
+    "categories": [
+      "flow-reasoning",
+      "reasoning-dynamics"
+    ],
+    "state": "Self-conditioned denoising estimate",
+    "compute": "Flow time × fixed-point iteration; then distillation",
+    "task": "Language generation",
+    "takeaway": "Interprets self-conditioning as fixed-point iteration and separates flow progress from recurrent refinement into two computational axes.",
+    "why": "Provides a mathematical bridge between flow dynamics and recurrence."
+  },
+  {
+    "id": "continuous-denoising-2026",
+    "title": "One-step Language Modeling via Continuous Denoising",
+    "year": 2026,
+    "authors": "Chanhyuk Lee et al.",
+    "url": "https://arxiv.org/abs/2602.16813",
+    "status": "adjacent",
+    "categories": [
+      "flow-reasoning"
+    ],
+    "state": "Continuous denoising state over token encodings",
+    "compute": "Flow integration, then flow-map distillation",
+    "task": "Language generation",
+    "takeaway": "Shows continuous denoising over language can support competitive few-step and one-step generation.",
+    "why": "Supplies the generative-flow substrate later reused by fixed-point and reasoning-oriented flow models."
+  },
+  {
+    "id": "elf-2026",
+    "title": "ELF: Embedded Language Flows",
+    "year": 2026,
+    "authors": "Keya Hu et al.",
+    "url": "https://arxiv.org/abs/2605.10938",
+    "status": "adjacent",
+    "categories": [
+      "flow-reasoning",
+      "latent-reasoning"
+    ],
+    "state": "Continuous embedding-space language state",
+    "compute": "Continuous-time flow matching with final discretization",
+    "task": "Language generation",
+    "takeaway": "Keeps language generation in continuous embedding space until the final discretization step.",
+    "why": "Relevant to which continuous state space is suitable for language-level flow dynamics."
+  }
+]

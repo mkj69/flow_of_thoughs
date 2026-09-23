@@ -1,0 +1,39 @@
+name: Add a paper
+about: Suggest a paper or correction for the research map
+title: "[Paper] "
+labels: [paper]
+body:
+  - type: input
+    id: title
+    attributes:
+      label: Paper title
+    validations:
+      required: true
+  - type: input
+    id: url
+    attributes:
+      label: Canonical URL
+      placeholder: https://arxiv.org/abs/...
+    validations:
+      required: true
+  - type: dropdown
+    id: category
+    attributes:
+      label: Primary category
+      options:
+        - recurrent-depth
+        - latent-reasoning
+        - flow-reasoning
+        - adaptive-compute
+        - recurrent-memory
+        - reasoning-dynamics
+        - other / unsure
+    validations:
+      required: true
+  - type: textarea
+    id: why
+    attributes:
+      label: Why it belongs here
+      description: Explain the state representation, update rule, compute allocation, and what this paper changes.
+    validations:
+      required: true
