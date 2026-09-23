@@ -50,7 +50,43 @@ h1 {
   font-weight: 650;
 }
 h1 em { color: var(--accent); font-style: normal; }
-.lede { max-width: 770px; font-size: clamp(18px, 2.3vw, 24px); color: #4d504a; margin: 0 0 32px; }
+.lede { max-width: 770px; font-size: clamp(18px, 2.3vw, 24px); color: #4d504a; margin: 0 0 24px; }
+.update-strip {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 0;
+  width: fit-content;
+  max-width: 100%;
+  margin: 0 0 30px;
+  padding: 10px 14px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  color: var(--muted);
+  background: rgba(255,255,255,.48);
+  font-size: 11px;
+}
+.living-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: var(--ink);
+  font-weight: 700;
+}
+.living-status i {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 0 4px rgba(91,78,232,.1);
+}
+.update-date,
+.update-promise {
+  margin-left: 12px;
+  padding-left: 12px;
+  border-left: 1px solid var(--line);
+}
+.update-date time { color: var(--ink); font-weight: 700; }
 .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
 .button {
   display: inline-flex;
@@ -338,6 +374,19 @@ footer { border-top: 1px solid var(--line); padding: 34px 0 50px; font-size: 12p
   .paper { grid-template-columns: 1fr; gap: 10px; }
   .paper-meta { grid-column: 1; }
   .paper-year { font-size: 14px; }
+  .update-strip {
+    align-items: flex-start;
+    border-radius: 14px;
+  }
+  .living-status,
+  .update-date,
+  .update-promise { width: 100%; }
+  .update-date,
+  .update-promise {
+    margin-left: 0;
+    padding-left: 14px;
+    border-left-color: rgba(91,78,232,.24);
+  }
   .reasoning-diagram {
     grid-template-columns: 1fr;
     grid-template-rows: auto 46px auto 46px auto;
