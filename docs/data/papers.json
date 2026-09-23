@@ -119,7 +119,26 @@
     "task": "language modeling / reasoning",
     "status": "core",
     "takeaway": "Scales test-time compute by iterating a recurrent block rather than emitting more reasoning tokens.",
-    "why": "Directly operationalizes the question: what if thinking longer means deeper latent computation?"
+    "why": "Directly tests whether reasoning compute can be allocated to deeper latent computation instead of more output tokens."
+  },
+  {
+    "id": "ouro-2025",
+    "title": "Scaling Latent Reasoning via Looped Language Models",
+    "year": 2025,
+    "authors": "Rui-Jie Zhu et al.",
+    "url": "https://arxiv.org/abs/2510.25741",
+    "categories": [
+      "recurrent-depth",
+      "latent-reasoning",
+      "adaptive-compute",
+      "scaling"
+    ],
+    "state": "latent token states carried through a weight-tied Transformer stack",
+    "compute": "up to four recurrent passes with a learned Q-exit policy",
+    "task": "language modeling / reasoning / knowledge manipulation",
+    "status": "core",
+    "takeaway": "Ouro pretrains looped language models at 7.7T-token scale and learns to allocate recurrent depth rather than relying only on longer visible reasoning traces.",
+    "why": "It provides large-scale evidence that recurrence can be a practical scaling axis while exposing stability, saturation, and halting as central constraints."
   },
   {
     "id": "ponderlm2-2025",

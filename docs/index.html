@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="A living map of recurrent, latent, flow-based, and adaptive reasoning." />
-  <title>Flow of Thoughts</title>
+  <meta name="description" content="A research map of iterative, latent, recurrent, and flow-based reasoning beyond token-by-token chain-of-thought." />
+  <title>Flow of Thoughts — Beyond Chain-of-Thought</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,500;8..60,650&display=swap" rel="stylesheet">
@@ -14,34 +14,35 @@
   <header class="topbar">
     <a class="brand" href="#top">Flow of Thoughts</a>
     <nav>
+      <a href="#guide">Guide</a>
       <a href="#map">Map</a>
-      <a href="#evidence">Evidence</a>
-      <a href="#dossiers">Dossiers</a>
-      <a href="#papers">Papers</a>
+      <a href="#evidence">Findings</a>
+      <a href="#dossiers">Paper evidence</a>
+      <a href="#papers">Library</a>
       <a href="#questions">Questions</a>
-      <a href="#paths">Reading paths</a>
       <a href="https://github.com/mkj69/flow_of_thoughs" target="_blank" rel="noreferrer">GitHub ↗</a>
     </nav>
   </header>
 
   <main id="top">
     <section class="hero wrap">
-      <div class="eyebrow">A living research map</div>
-      <h1>What should change when a model <em>thinks longer</em>?</h1>
+      <div class="eyebrow">A research map beyond chain-of-thought</div>
+      <h1>How should models <em>organize reasoning computation</em>?</h1>
       <p class="lede">
-        A curated map of recurrent depth, latent reasoning, flow-based reasoning,
-        adaptive computation, recurrent memory, and the dynamics that connect them.
+        Flow of Thoughts maps methods that reorganize reasoning beyond token-by-token chains—through
+        recurrent depth, latent states, flow-based refinement, adaptive allocation, and recurrent memory.
+        The goal is not necessarily more computation, but better-structured computation.
       </p>
       <div class="hero-actions">
-        <a class="button primary" href="#evidence">Read the synthesis</a>
-        <a class="button secondary" href="#papers">Explore papers</a>
+        <a class="button primary" href="#guide">How to read the map</a>
+        <a class="button secondary" href="#papers">Browse the paper library</a>
       </div>
       <div class="thesis-card">
-        <span class="label">Working thesis</span>
+        <span class="label">Core idea</span>
         <div class="thesis-line">
-          <code>reasoning = generate more tokens</code>
+          <code>reasoning = only generate more tokens</code>
           <span class="arrow">→</span>
-          <code>reasoning = evolve a computational state</code>
+          <code>reasoning = structure and route computation</code>
         </div>
       </div>
     </section>
@@ -53,13 +54,50 @@
       <div><strong id="stat-insights">–</strong><span>evidence syntheses</span></div>
     </section>
 
+    <section id="guide" class="section wrap guide-section">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow">How to read this site</div>
+          <h2>Four layers, four different jobs</h2>
+        </div>
+        <p>You do not need to read the page from top to bottom. Choose the layer that matches what you want to know.</p>
+      </div>
+      <div class="guide-grid">
+        <a href="#map">
+          <span>01 · Vocabulary</span>
+          <h3>Map</h3>
+          <p>Six overlapping mechanisms for organizing the field. A single paper can belong to several.</p>
+          <b>Use this to learn the landscape →</b>
+        </a>
+        <a href="#evidence">
+          <span>02 · Conclusions</span>
+          <h3>Findings</h3>
+          <p>Cross-paper conclusions that separate direct results from our synthesis and hypotheses.</p>
+          <b>Use this for the main scientific takeaways →</b>
+        </a>
+        <a href="#dossiers">
+          <span>03 · Audit trail</span>
+          <h3>Paper evidence</h3>
+          <p>Structured records of what each core paper actually establishes, limits, and leaves open.</p>
+          <b>Use this to verify a claim →</b>
+        </a>
+        <a href="#papers">
+          <span>04 · Index</span>
+          <h3>Library</h3>
+          <p>The complete searchable bibliography, including roots, core papers, and adjacent work.</p>
+          <b>Use this to find a specific paper →</b>
+        </a>
+      </div>
+      <p class="guide-note"><strong>New to the topic?</strong> Read Map → Findings → one or two Paper evidence cards. Use the Library only when you need breadth.</p>
+    </section>
+
     <section id="map" class="section wrap">
       <div class="section-head">
         <div>
           <div class="eyebrow">Conceptual map</div>
-          <h2>Six views of “thinking”</h2>
+          <h2>Six overlapping mechanisms</h2>
         </div>
-        <p>These are not mutually exclusive buckets. The interesting papers increasingly sit at their intersections.</p>
+        <p>These are lenses, not separate fields. Ouro, for example, belongs to recurrent depth, latent reasoning, adaptive compute, and scaling at the same time.</p>
       </div>
       <div class="map-grid">
         <button class="map-card" data-filter="recurrent-depth">
@@ -105,10 +143,10 @@
       <div class="wrap dynamics">
         <div>
           <div class="eyebrow">Unifying lens</div>
-          <h2>State → update → compute policy → outcome</h2>
+          <h2>Four questions for every method</h2>
           <p>
-            Instead of grouping papers only by model name, compare them by the state they manipulate,
-            the update rule they apply, and the policy that decides how much computation to spend.
+            <strong>State:</strong> what carries the intermediate computation? <strong>Update:</strong> how does it change?
+            <strong>Compute policy:</strong> where and how long does the model iterate? <strong>Outcome:</strong> what improves?
           </p>
         </div>
         <div class="flow-diagram" role="img" aria-label="Reasoning state evolution diagram">
@@ -127,7 +165,7 @@
       <div class="section-head">
         <div>
           <div class="eyebrow">Evidence-backed synthesis</div>
-          <h2>What the papers collectively tell us</h2>
+          <h2>Cross-paper findings</h2>
         </div>
         <p>
           Each synthesis separates <strong>direct paper evidence</strong> from our cross-paper inference,
@@ -151,7 +189,7 @@
       <div class="section-head">
         <div>
           <div class="eyebrow">Paper dossiers</div>
-          <h2>Claims before synthesis</h2>
+          <h2>What each core paper establishes</h2>
         </div>
         <p>
           Each dossier records the paper's research question, state, update rule, compute policy,
@@ -169,7 +207,7 @@
       <div class="section-head papers-head">
         <div>
           <div class="eyebrow">Paper explorer</div>
-          <h2>Search by mechanism, not buzzword</h2>
+          <h2>Search the full bibliography</h2>
         </div>
         <p id="result-count">Loading…</p>
       </div>
@@ -201,7 +239,7 @@
       <div class="section-head">
         <div>
           <div class="eyebrow">Research programs</div>
-          <h2>Questions that survive the evidence</h2>
+          <h2>Open problems derived from the evidence</h2>
         </div>
         <p>These are downstream of the evidence synthesis above: each should be traceable to concrete results, limitations, or future-work statements.</p>
       </div>
@@ -228,7 +266,7 @@
           <article>
             <span class="path-no">01</span>
             <h3>Recurrent depth</h3>
-            <p>Universal Transformers → Recurrent Depth → LoopFormer → Parcae → Loop, Think, & Generalize</p>
+            <p>Universal Transformers → Recurrent Depth → Ouro → LoopFormer → Parcae → Loop, Think, & Generalize</p>
             <strong>Lens:</strong> Why should another loop help?
           </article>
           <article>

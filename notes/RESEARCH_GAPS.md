@@ -47,7 +47,7 @@
 
 ## G4 — A unified compute router
 
-**Evidence chain.** EqR exposes depth and breadth. PonderLM-3 routes compute across tokens. FRM spends compute on whole-solution refinement. Looped Flows changes temporal resolution and stochastic initializations.
+**Evidence chain.** EqR exposes depth and breadth. Ouro routes compute across recurrent passes with learned early exit. PonderLM-3 routes compute across tokens. FRM spends compute on whole-solution refinement. Looped Flows changes temporal resolution and stochastic initializations.
 
 **Question.** Given one more unit of compute, should the system spend it on another local update, another trajectory, another token, or stop?
 
@@ -57,7 +57,7 @@
 
 ## G5 — Coupled scaling of parameters, data, recurrence, and state capacity
 
-**Evidence chain.** Parcae treats recurrence as a scaling axis. LRT shifts recurrent work toward pretraining. Maglev introduces fixed-size recurrent memory.
+**Evidence chain.** Ouro shows that looped pretraining can scale to 7.7T tokens but also exposes deep-loop instability. Parcae treats recurrence as a scaling axis. LRT shifts recurrent work toward pretraining. Maglev introduces fixed-size recurrent memory.
 
 **Question.** Under a fixed deployment budget, when is it better to buy a larger model, more data, more recurrence, or more recurrent-state capacity?
 

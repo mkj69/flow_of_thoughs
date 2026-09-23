@@ -6,9 +6,10 @@ Three reading paths depending on what you want to understand.
 
 1. **Universal Transformers** (2018) — the recurrence-over-depth ancestor.
 2. **Scaling up Test-Time Compute with Latent Reasoning** (2025) — modern recurrent-depth scaling.
-3. **LoopFormer** (2026) — variable compute budgets.
-4. **Parcae** (2026) — stability + scaling laws.
-5. **Loop, Think, & Generalize** (2026) — depth extrapolation and overthinking.
+3. **Ouro / Scaling Latent Reasoning via Looped Language Models** (2025) — multi-trillion-token LoopLM pretraining and learned depth allocation.
+4. **LoopFormer** (2026) — variable compute budgets.
+5. **Parcae** (2026) — stability + scaling laws.
+6. **Loop, Think, & Generalize** (2026) — depth extrapolation and overthinking.
 
 Question to keep in mind: **why should another loop help rather than merely repeat the same computation?**
 

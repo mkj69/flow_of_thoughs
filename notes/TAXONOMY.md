@@ -14,7 +14,7 @@ Questions:
 - What prevents residual/state explosion?
 - How should time/depth be encoded?
 
-Representative work: Universal Transformers, recurrent-depth test-time scaling, LoopFormer, Parcae.
+Representative work: Universal Transformers, recurrent-depth test-time scaling, Ouro, LoopFormer, Parcae.
 
 ## 2. Latent reasoning
 
@@ -50,7 +50,7 @@ Questions:
 - What is the correct compute regularizer?
 - How do we avoid shallow-halting traps or overthinking?
 
-Representative work: ACT, Universal Transformer halting, PonderLM-3.
+Representative work: ACT, Universal Transformer halting, Ouro, PonderLM-3.
 
 ## 5. Recurrent memory
 

@@ -4,9 +4,9 @@
 
 This repository organizes a fast-moving cluster of work around a simple question:
 
-> **What should change when a model thinks longer?**
+> **How should models organize reasoning computation beyond token-by-token chain-of-thought?**
 
-Today, extra reasoning compute is often expressed as more generated tokens. This repository tracks alternatives in which computation happens through recurrent depth, latent states, self-conditioning, fixed-point refinement, recurrent memory, flow dynamics, and adaptive halting.
+Today, reasoning is often identified with generating a longer visible chain of tokens. This repository tracks alternatives that restructure computation through recurrent depth, latent states, self-conditioning, fixed-point refinement, recurrent memory, flow dynamics, and adaptive halting. These methods do not necessarily spend more compute; they change where, how, and when computation happens.
 
 ## Evidence before speculation
 
@@ -60,18 +60,18 @@ A useful way to compare methods is to ask four questions:
 |---|---|
 | **What is the thought state?** | tokens, residual stream, latent tokens, candidate solution, KV memory |
 | **How does it evolve?** | recurrence, self-conditioning, fixed-point solve, flow integration |
-| **How is extra compute allocated?** | fixed loops, adaptive halting, per-token pondering, finer time grid |
-| **Why should more compute help?** | refinement, search, contraction, memory propagation, compositional depth |
+| **How is compute allocated?** | fixed loops, adaptive halting, per-token pondering, finer time grid |
+| **What does the computation buy?** | refinement, search, contraction, memory propagation, compositional depth |
 
 ## Initial research thesis
 
 The emerging field may be understood as a shift from
 
-`reasoning = generate more tokens`
+`reasoning = only generate more tokens`
 
 toward
 
-`reasoning = evolve a computational state under a controllable dynamics`.
+`reasoning = structure and route computation across tokens, latent states, depth, and memory`.
 
 That framing is intentionally broad. One purpose of this repository is to test where it is useful and where it breaks.
 

@@ -124,6 +124,12 @@
       },
       {
         "type": "DIRECT",
+        "paper": "Ouro",
+        "claim": "A learned exit distribution and Q-exit policy allocate a variable number of recurrent passes, adding per-input loop depth as another compute-allocation axis.",
+        "url": "https://arxiv.org/abs/2510.25741"
+      },
+      {
+        "type": "DIRECT",
         "paper": "Thinking with Looped Flows",
         "claim": "A finer temporal integration grid increases recurrent computation, while stochastic initializations provide multiple valid predictions on multi-solution tasks.",
         "url": "https://arxiv.org/abs/2609.11801"
@@ -143,6 +149,12 @@
     "level": "direct + synthesis",
     "summary": "Stable looped models show predictable training and inference scaling behavior. This makes recurrence a credible third resource axis beside parameters and data, but also shows why 'just think longer' cannot be the whole story.",
     "evidence": [
+      {
+        "type": "DIRECT",
+        "paper": "Ouro",
+        "claim": "Ouro scales looped-language-model pretraining to 7.7T tokens and reports 2–3× parameter-efficiency gains, while eight-loop training becomes unstable and the final models use four recurrent steps.",
+        "url": "https://arxiv.org/abs/2510.25741"
+      },
       {
         "type": "DIRECT",
         "paper": "Parcae",

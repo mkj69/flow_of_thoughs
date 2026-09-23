@@ -47,7 +47,7 @@ A research question enters the main site only when it has:
 
 ### 4. Test-time compute is a vector, not a scalar
 
-**Direct evidence.** EqR separates depth from breadth. PonderLM-3 allocates compute token-wise. FRM repeatedly refines whole candidate solutions. Looped Flows changes temporal discretization and can sample multiple solutions.
+**Direct evidence.** EqR separates depth from breadth. Ouro learns how many recurrent passes to allocate to an input through an exit distribution and Q-exit policy. PonderLM-3 allocates compute token-wise. FRM repeatedly refines whole candidate solutions. Looped Flows changes temporal discretization and can sample multiple solutions.
 
 **Synthesis.** The problem is not simply how much compute to spend, but where the next unit of compute should go.
 
@@ -55,7 +55,7 @@ A research question enters the main site only when it has:
 
 ### 5. Looping is a scaling axis, but returns saturate
 
-**Direct evidence.** Parcae reports recurrence/data scaling laws and saturating test-time gains; its future-work section asks whether these laws survive larger budgets and how parameters, data, and recurrence should be scaled jointly. LRT explores a different point on the systems frontier by moving recurrent refinement into training while keeping one decoding forward per token.
+**Direct evidence.** Ouro scales LoopLM pretraining to 7.7T tokens and reports 2–3× parameter efficiency, while also finding that eight-loop training is unstable enough to require a four-loop final design. Parcae reports recurrence/data scaling laws and saturating test-time gains; its future-work section asks whether these laws survive larger budgets and how parameters, data, and recurrence should be scaled jointly. LRT explores a different point on the systems frontier by moving recurrent refinement into training while keeping one decoding forward per token.
 
 **Synthesis.** Recurrence should be modeled as a resource with a cost, not as free intelligence.
 
@@ -79,3 +79,4 @@ A research question enters the main site only when it has:
 - Towards Inference-time Scaling for Continuous Space Reasoning — https://aclanthology.org/2026.findings-acl.1338/
 - PonderLM-3 — https://arxiv.org/abs/2603.02023
 - Latent Recurrent Transformer — https://arxiv.org/abs/2605.26797
+- Ouro / Scaling Latent Reasoning via Looped Language Models — https://arxiv.org/abs/2510.25741

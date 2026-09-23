@@ -78,6 +78,56 @@
     ]
   },
   {
+    "id": "ouro",
+    "title": "Scaling Latent Reasoning via Looped Language Models",
+    "year": 2025,
+    "role": "core",
+    "url": "https://arxiv.org/abs/2510.25741",
+    "research_question": "Can recurrent depth become a practical pretraining-scale resource for language models, rather than a small-scale architectural experiment?",
+    "state": "Token representations carried through a parameter-shared Transformer stack",
+    "update": "Apply the same weight-tied layers repeatedly so each recurrent pass refines the latent computation",
+    "compute_policy": "Train an exit distribution with entropy regularization, then use Q-exit to choose recurrent depth",
+    "direct_findings": [
+      {
+        "claim": "The 1.4B and 2.6B Ouro models are pretrained on 7.7T tokens and report performance comparable to 4B and 8B standard Transformers on most evaluated benchmarks.",
+        "source": "Abstract / §1"
+      },
+      {
+        "claim": "Controlled experiments attribute the advantage primarily to improved knowledge manipulation and multi-hop composition rather than increased raw knowledge storage.",
+        "source": "§1 / §6"
+      },
+      {
+        "claim": "An entropy-regularized exit objective prevents the learned depth distribution from collapsing immediately to the deepest loop, while focused gate training improves the accuracy–compute trade-off.",
+        "source": "§3.3 / §5.4"
+      },
+      {
+        "claim": "The learned Q-exit policy lets simple inputs terminate earlier and allocates more recurrent computation when the exit distribution supports it.",
+        "source": "§3.2 / §5.4"
+      }
+    ],
+    "limitations_future": [
+      {
+        "claim": "Training with eight recurrent steps produced loss spikes and gradient oscillations, so the final large-scale models use four recurrent steps.",
+        "source": "§4.3"
+      },
+      {
+        "claim": "Reasoning performance generally peaks near the trained recurrent depth and is not guaranteed to improve monotonically when extra loops are added.",
+        "source": "§5.3"
+      },
+      {
+        "claim": "The strongest adaptive-exit trade-off requires a specialized second-stage gate objective rather than emerging perfectly from language-model pretraining alone.",
+        "source": "§5.4"
+      }
+    ],
+    "why_it_matters": "Ouro is the large-scale bridge between early looped-Transformer ideas and modern recurrent reasoning: it shows that loop depth can be trained at foundation-model scale, while making stability and compute allocation impossible to ignore.",
+    "connections": [
+      "Scaling up Test-Time Compute with Latent Reasoning",
+      "Parcae",
+      "PonderLM-3",
+      "Fixed-Point Reasoners"
+    ]
+  },
+  {
     "id": "ponderlm3",
     "title": "PonderLM-3: Adaptive Token-Wise Pondering with Differentiable Masking",
     "year": 2026,

@@ -67,6 +67,37 @@ Coconut makes the 'thought state' concrete and exposes two field-defining proble
 
 **Source:** https://arxiv.org/abs/2412.06769
 
+## Scaling Latent Reasoning via Looped Language Models / Ouro (2025)
+
+**Research question.** Can recurrent depth become a practical pretraining-scale resource for language models, rather than a small-scale architectural experiment?
+
+**State.** Token representations carried through a parameter-shared Transformer stack
+
+**Update.** Apply the same weight-tied layers repeatedly so each recurrent pass refines the latent computation
+
+**Compute policy.** Train an exit distribution with entropy regularization, then use Q-exit to choose recurrent depth
+
+### Direct findings
+
+- **DIRECT — Abstract / §1**: The 1.4B and 2.6B Ouro models are pretrained on 7.7T tokens and report performance comparable to 4B and 8B standard Transformers on most evaluated benchmarks.
+- **DIRECT — §1 / §6**: Controlled experiments attribute the advantage primarily to improved knowledge manipulation and multi-hop composition rather than increased raw knowledge storage.
+- **DIRECT — §3.3 / §5.4**: Entropy regularization prevents immediate collapse of the learned exit distribution to the deepest loop, while focused gate training improves the accuracy–compute trade-off.
+- **DIRECT — §3.2 / §5.4**: Q-exit converts the learned exit distribution into an inference policy that can terminate simple inputs earlier and allocate deeper recurrence when useful.
+
+### Limitations / future directions
+
+- **SCOPE — §4.3**: Training with eight recurrent steps produced loss spikes and gradient oscillations, so the final large-scale models use four recurrent steps.
+- **SCOPE — §5.3**: Reasoning performance generally peaks near the trained recurrent depth and is not guaranteed to improve monotonically with additional loops.
+- **SCOPE — §5.4**: The best adaptive-exit trade-off requires specialized second-stage gate training rather than emerging perfectly from language-model pretraining alone.
+
+### Why it matters
+
+Ouro is the large-scale bridge between early looped-Transformer ideas and modern recurrent reasoning: it shows that loop depth can be trained at foundation-model scale, while making stability and compute allocation impossible to ignore.
+
+**Connections:** Scaling up Test-Time Compute with Latent Reasoning, Parcae, PonderLM-3, Fixed-Point Reasoners
+
+**Source:** https://arxiv.org/abs/2510.25741
+
 ## PonderLM-3: Adaptive Token-Wise Pondering with Differentiable Masking (2026)
 
 **Research question.** If extra inference compute is useful, which tokens should receive it?
