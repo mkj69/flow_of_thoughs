@@ -131,7 +131,7 @@
       </div>
     </section>
 
-    <section class="section band">
+    <section id="framework" class="section band">
       <div class="wrap dynamics">
         <div>
           <div class="eyebrow">Unifying lens</div>
@@ -141,14 +141,61 @@
             <strong>Compute policy:</strong> where and how long does the model iterate? <strong>Outcome:</strong> what improves?
           </p>
         </div>
-        <div class="flow-diagram" role="img" aria-label="Reasoning state evolution diagram">
-          <div class="node"><small>problem</small><b>x</b></div>
-          <span>→</span>
-          <div class="node active"><small>thought state</small><b>z₀</b></div>
-          <span>→</span>
-          <div class="node active"><small>update</small><b>Fθ</b></div>
-          <span class="loop">↺</span>
-          <div class="node"><small>solution</small><b>y</b></div>
+        <div class="reasoning-diagram" role="img" aria-label="A problem x initializes a thought state z. The update rule F theta repeatedly refines the state under a compute policy, then the final state is read out as solution y.">
+          <div class="reasoning-stage input-stage">
+            <span class="stage-index">01</span>
+            <small>problem</small>
+            <strong>x</strong>
+            <span class="stage-note">task + context</span>
+          </div>
+
+          <div class="reasoning-connector">
+            <span>initialize</span>
+            <i aria-hidden="true"></i>
+          </div>
+
+          <div class="iteration-stage">
+            <div class="iteration-head">
+              <span class="stage-index">02</span>
+              <span>iterative thought</span>
+              <b>t = 0, 1, …</b>
+            </div>
+            <div class="iteration-body">
+              <svg class="iteration-orbit" viewBox="0 0 240 132" aria-hidden="true">
+                <defs>
+                  <marker id="loop-arrowhead" markerWidth="8" markerHeight="8" refX="5" refY="3" orient="auto" markerUnits="strokeWidth">
+                    <path d="M0,0 L0,6 L6,3 z"></path>
+                  </marker>
+                </defs>
+                <path d="M58 99 C20 72 29 24 79 15 C120 7 172 12 195 43" marker-end="url(#loop-arrowhead)"></path>
+                <path d="M184 88 C157 119 101 126 63 102" marker-end="url(#loop-arrowhead)"></path>
+              </svg>
+              <div class="state-token">
+                <small>state</small>
+                <strong>z<sub>t</sub></strong>
+              </div>
+              <div class="update-token">
+                <small>update rule</small>
+                <strong>F<sub>θ</sub></strong>
+              </div>
+            </div>
+            <div class="compute-policy">
+              <span>Compute policy</span>
+              <b>continue ↻ <em>or</em> stop →</b>
+            </div>
+          </div>
+
+          <div class="reasoning-connector">
+            <span>read out</span>
+            <i aria-hidden="true"></i>
+          </div>
+
+          <div class="reasoning-stage output-stage">
+            <span class="stage-index">03</span>
+            <small>solution</small>
+            <strong>y</strong>
+            <span class="stage-note">measured outcome</span>
+          </div>
         </div>
       </div>
     </section>
