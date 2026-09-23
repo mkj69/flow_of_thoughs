@@ -4,7 +4,7 @@
 
 This repository organizes a fast-moving cluster of work around a simple question:
 
-> **How should models organize reasoning computation beyond token-by-token chain-of-thought?**
+> **How should thoughts flow through a model beyond token-by-token chain-of-thought?**
 
 Today, reasoning is often identified with generating a longer visible chain of tokens. This repository tracks alternatives that restructure computation through recurrent depth, latent states, self-conditioning, fixed-point refinement, recurrent memory, flow dynamics, and adaptive halting. These methods do not necessarily spend more compute; they change where, how, and when computation happens.
 
